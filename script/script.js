@@ -1,4 +1,4 @@
-let lang = 'ru';
+let lang = prompt('Выберите язык перевода', 'ru');
 
 if (lang === 'ru') {
     console.log(['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']);
@@ -18,12 +18,13 @@ switch (lang) {
         console.log(['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']);
 }
 
-let arrLang = [
-    'ru' = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
-    'en' = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-];
+let arrLang = {
+    ru: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+    en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+};
+console.log(arrLang[lang]);
 
-let namePerson = 'Артем';
+let namePerson = prompt('Введите имя:');
 console.log(namePerson === 'Артем' ? 'директор' : namePerson === 'Максим' ? 'преподаватель' : 'студент');
 
 //ДЗ2
