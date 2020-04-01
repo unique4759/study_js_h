@@ -6,4 +6,5 @@ function checkArgument(value) {
     }
 }
 
-checkArgument(['    Аргумент должен быть строкой и точка!  ']);
+let setValue = prompt('Введите значение:');
+checkArgument(setValue);
