@@ -1,33 +1,22 @@
-let date = new Date(),
-    days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-    findSelect = document.querySelector('.days'),
-    list = '';
+setInterval(function() {
+    let date = new Date(),
+    days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+    month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'ноября', 'декабря'];
 
-days.forEach((day, key) => {
-    let nowDay;
+function endingWord(hour, titles) {  
+    let cases = [2, 0, 1, 1, 1, 2];  
+    return titles[(hour % 100 > 4 && hour % 100 < 20) ? 2 : cases[(hour % 10 < 5) ? hour % 10 : 5]];  
+} 
 
-    if(date.getDay() == 0) {
-        nowDay = 6;
-    }
-    else {
-        nowDay = date.getDay() - 1;
-    }
+function setNum(num){
+	if (num > 0 && num < 10) { 
+		return '0' + num;
+	} else {
+		return num;
+	}
+}
 
-    if(key == nowDay) {
-        if (key == 5 || key == 6) {
-            list += '<li>' + day.bold().italics() + '</li>';
-        } else {
-            list += '<li>' + day.bold() + '</li>';
-        }
-    }
-    else {
-        if (key == 5 || key == 6) {
-            list += '<li>' + day.italics() + '</li>';
-        }
-        else {
-            list += '<li>' + day + '</li>';
-        }
-    }
-});
+console.log('Сегодня ' + days[date.getDay()] + ', ' + date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear() + ' года, ' + date.getHours() + ' ' + endingWord(date.getHours(), ['час', 'часа', 'часов']) + ' ' + date.getMinutes() + ' минут ' + date.getSeconds() + ' секунд');
+console.log(setNum(date.getDate()) + '.' + (setNum(date.getMonth() + 1)) + '.' + date.getFullYear() + ' - ' + setNum(date.getHours()) + ':' + setNum(date.getMinutes()) + ':' + setNum(date.getSeconds()));
 
-findSelect.innerHTML = list;
+}, 1000);
