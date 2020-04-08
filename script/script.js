@@ -5,9 +5,9 @@ setInterval(function() {
     days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
     month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'ноября', 'декабря'];
 
-    function endingWord(hour, titles) {  
-        let cases = [2, 0, 1, 1, 1, 2];  
-        return titles[(hour % 100 > 4 && hour % 100 < 20) ? 2 : cases[(hour % 10 < 5) ? hour % 10 : 5]];  
+    function endingWord(hour) {  
+        return (hour == 1 || (hour > 19 && hour % 10 == 1)) ? 'час' :
+        ((hour > 1 && hour < 5) || (hour > 19 && hour % 10 > 1 && hour % 10 < 5)) ? 'часа' : 'часов'; 
     } 
 
     function setNum(num){
@@ -18,7 +18,7 @@ setInterval(function() {
         }
     }
 
-    list += '<p>' + 'Сегодня ' + days[date.getDay()] + ', ' + date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear() + ' года, ' + date.getHours() + ' ' + endingWord(date.getHours(), ['час', 'часа', 'часов']) + ' ' + date.getMinutes() + ' минут ' + date.getSeconds() + ' секунд' + '</p>';
+    list += '<p>' + 'Сегодня ' + days[date.getDay()] + ', ' + date.getDate() + ' ' + month[date.getMonth()] + ' ' + date.getFullYear() + ' года, ' + date.getHours() + ' ' + endingWord(date.getHours()) + ' ' + date.getMinutes() + ' минут ' + date.getSeconds() + ' секунд' + '</p>';
     list += '<p>' + setNum(date.getDate()) + '.' + (setNum(date.getMonth() + 1)) + '.' + date.getFullYear() + ' - ' + setNum(date.getHours()) + ':' + setNum(date.getMinutes()) + ':' + setNum(date.getSeconds()) + '</p>';
 
     findSelect.innerHTML = list;
