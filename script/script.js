@@ -1,15 +1,9 @@
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 change.addEventListener('click', function () {
-    let color = '';
+    let r = Math.floor(Math.random() * (256)),
+        g = Math.floor(Math.random() * (256)),
+        b = Math.floor(Math.random() * (256));
 
-    for (let i = 0; i < 6; i++) {
-        color += getRandomIntInclusive(0, 9);
-    }
+    let color = r.toString(16) + g.toString(16) + b.toString(16);
 
     document.body.style.backgroundColor = '#' + color;
     document.querySelector('#color').textContent = '#' + color;
